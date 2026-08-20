@@ -1,0 +1,7 @@
+2026-08-17 23:46:46 [main] INFO  Log -Setting up WebDriver...
+2026-08-17 23:46:48 [main] INFO  Log -Navigating to Test Url
+2026-08-17 23:46:51 [main] INFO  Log -Starting login test
+2026-08-17 23:46:52 [main] INFO  Log -Clicking on login button
+2026-08-17 23:46:52 [main] INFO  Log -Verifying page title
+2026-08-17 23:46:53 [main] INFO  Log -Login test completed
+2026-08-17 23:46:53 [main] INFO  Log -Closing WebDriver...
