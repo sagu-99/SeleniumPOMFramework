@@ -1,7 +1,6 @@
 package tests;
 
 import base.BaseTest;
-import com.beust.jcommander.Parameter;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.LoginPage;
@@ -46,8 +45,10 @@ public class LoginTests extends BaseTest {
         loginPage = new LoginPage(driver);
         test.info("Navigated to Login Page");
         test.info("Entering Credentials");
-//        loginPage.enterUsername("Admin");
-//        loginPage.enterPassword("admin123");
+/*
+        loginPage.enterUsername("Admin");
+        loginPage.enterPassword("admin123");
+*/
         loginPage.enterUsername(username);
         loginPage.enterPassword(password);
         loginPage.clickLoginButton();
@@ -62,7 +63,7 @@ public class LoginTests extends BaseTest {
    // @Test(dataProvider = "loginData2")
     @Test
     @Parameters({"username", "password"})
-    public void verifyLoginFunction(String username, String password) {
+    public void verifyLoginFunction(@Optional("Admin") String username, @Optional("admin123") String password) {
         Log.info("Starting login test");
         test = ExtentReportManager.createTest("Login Test --"+ username);
         loginPage = new LoginPage(driver);
