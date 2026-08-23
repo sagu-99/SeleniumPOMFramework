@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.DriverManager;
 import utils.Log;
 
 public class LoginPage {
@@ -12,8 +13,8 @@ public class LoginPage {
     private By passwordTextbox = By.name("password");
     private By loginButton = By.xpath("//button[@type='submit']");
 
-    public LoginPage(WebDriver driver){
-        this.driver = driver;
+    public LoginPage(){
+        this.driver = DriverManager.getDriver();
     }
 
     public void enterUsername(String user){

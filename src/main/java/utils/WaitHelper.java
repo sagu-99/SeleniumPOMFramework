@@ -14,4 +14,9 @@ public class WaitHelper {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
+    public void waitForTitle(WebDriver driver, String title, int timeoutSeconds) {
+        new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
+                .until(ExpectedConditions.titleIs(title));
+    }
 }

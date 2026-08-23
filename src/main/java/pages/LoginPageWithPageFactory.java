@@ -11,9 +11,12 @@ public class LoginPageWithPageFactory {
 
     private WebDriver driver;
 
-    public LoginPageWithPageFactory(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public LoginPageWithPageFactory(){
+        this.driver = utils.DriverManager.getDriver();
+        if (this.driver == null) {
+            throw new IllegalStateException("WebDriver not initialized. Ensure BaseTest @BeforeMethod ran first.");
+        }
+        PageFactory.initElements(this.driver, this);
     }
 
     //Approach1

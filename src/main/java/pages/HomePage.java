@@ -9,9 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage {
     private WebDriver driver;
 
-    public HomePage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
+    public HomePage(){
+        this.driver = utils.DriverManager.getDriver();
+        if (this.driver == null) {
+            throw new IllegalStateException("WebDriver not initialized. Ensure BaseTest @BeforeMethod ran first.");
+        }
+        PageFactory.initElements(this.driver, this);
     }
 
     @FindBy(id="offers")

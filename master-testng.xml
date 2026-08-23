@@ -1,8 +1,13 @@
-<suite name = "TestSuite">
+<suite name = "TestSuite" parallel = "tests" thread-count = "2">
     <listeners>
         <listener class-name="org.testng.reporters.XMLReporter"/>
         <listener class-name="org.testng.reporters.EmailableReporter2"/>
+        <listener class-name="utils.MyListener" />
+        <!-- <listener class-name="com.example.MyMethodInterceptor" /> -->
     </listeners>
+
+    <!-- Suite-level defaults: provide a browser so @Parameters('browser') is satisfied when not set per-test -->
+    <parameter name="browser" value="chrome"/>
 
     <test name = "LoginTestsWithoutParameters">
         <classes>
