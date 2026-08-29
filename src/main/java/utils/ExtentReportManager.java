@@ -44,7 +44,12 @@ public class ExtentReportManager {
     public static String captureScreenshot(WebDriver driver, String screenshotName){
         try {
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String path = System.getProperty("user.dir")+"/screenshots/"+screenshotName+".png";
+            String folderPath = System.getProperty("user.dir") + File.separator + "screenshots";
+            File screenshotDir = new File(folderPath);
+            if (!screenshotDir.exists()) {
+                screenshotDir.mkdirs();
+            }
+            String path = folderPath + File.separator + screenshotName + ".png";
             FileUtils.copyFile(src, new File(path));
             return path;
         } catch (IOException e) {

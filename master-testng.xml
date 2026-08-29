@@ -2,7 +2,7 @@
     <listeners>
         <listener class-name="org.testng.reporters.XMLReporter"/>
         <listener class-name="org.testng.reporters.EmailableReporter2"/>
-        <listener class-name="utils.MyListener" />
+        <listener class-name="utils.FrameworkListener" />
         <!-- <listener class-name="com.example.MyMethodInterceptor" /> -->
     </listeners>
 

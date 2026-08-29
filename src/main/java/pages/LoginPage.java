@@ -1,33 +1,65 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import utils.DriverManager;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import utils.Log;
 
-public class LoginPage {
+/**
+ * Page class for the login page.
+ *
+ * <p>This class abstracts the login page UI and exposes actions such as entering credentials
+ * and clicking the login button.
+ */
+public class LoginPage extends BasePage {
 
-    private WebDriver driver;
+    @FindBy(name = "username")
+    private WebElement usernameTextbox;
 
-    private By usernameTextbox = By.name("username");
-    private By passwordTextbox = By.name("password");
-    private By loginButton = By.xpath("//button[@type='submit']");
+    @FindBy(name = "password")
+    private WebElement passwordTextbox;
 
-    public LoginPage(){
-        this.driver = DriverManager.getDriver();
+    @FindBy(xpath = "//button[@type='submit']")
+    private WebElement loginButton;
+
+    /**
+     * Initializes the page object and binds the WebElements to the current driver.
+     */
+    public LoginPage() {
+        super();
+        PageFactory.initElements(driver, this);
     }
 
-    public void enterUsername(String user){
-        driver.findElement(usernameTextbox).sendKeys(user);
+    /**
+     * Enters the username into the username field.
+     */
+    public void enterUsername(String user) {
+        usernameTextbox.clear();
+        usernameTextbox.sendKeys(user);
     }
 
+    /**
+     * Enters the password into the password field.
+     */
     public void enterPassword(String pwd) {
-        driver.findElement(passwordTextbox).sendKeys(pwd);
+        passwordTextbox.clear();
+        passwordTextbox.sendKeys(pwd);
     }
 
-    public void clickLoginButton(){
+    /**
+     * Clicks the login button.
+     */
+    public void clickLoginButton() {
         Log.info("Clicking on login button");
-        driver.findElement(loginButton).click();
+        loginButton.click();
     }
 
+    /**
+     * Performs the full login flow with one method call.
+     */
+    public void loginAs(String user, String password) {
+        enterUsername(user);
+        enterPassword(password);
+        clickLoginButton();
+    }
 }

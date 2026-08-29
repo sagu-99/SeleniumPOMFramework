@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="methods" thread-count="4">
   <listeners>
-    <listener class-name="utils.MyListener"/>
+  <listener class-name="utils.FrameworkListener"/>
   </listeners>
 
   <test name="ChromeTests">
